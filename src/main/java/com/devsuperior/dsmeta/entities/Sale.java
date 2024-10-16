@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.devsuperior.dsmeta.dto.SaleMinDTO;
+
 @Entity
 @Table(name = "tb_sales")
 public class Sale {
@@ -22,12 +24,30 @@ public class Sale {
 	private Double amount;
 	private LocalDate date;
 	
+
 	@ManyToOne
 	@JoinColumn(name = "seller_id")
 	private Seller seller;
 	
 	public Sale() {
 	}
+
+	public Sale(Long id, Integer visited, Integer deals, Double amount, LocalDate date, Seller seller) {
+		this.id = id;
+		this.visited = visited;
+		this.deals = deals;
+		this.amount = amount;
+		this.date = date;
+		this.seller = seller;
+	}
+	public Sale(SaleMinDTO dto) {
+		id = dto.getId();
+		amount = dto.getAmount();
+		date = dto.getDate();
+		//seller = dto.ge
+	}
+
+
 
 	public Long getId() {
 		return id;
